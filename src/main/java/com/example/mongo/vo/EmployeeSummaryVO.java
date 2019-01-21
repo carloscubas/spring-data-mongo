@@ -12,29 +12,29 @@ public class EmployeeSummaryVO {
 
     Double avg;
 
-    Long count;
+    Long total;
 
-    public Long getSum () {
+    public Long getSum() {
         return sum;
     }
 
-    public void setSum (final Long sum) {
+    public void setSum(Long sum) {
         this.sum = sum;
     }
 
-    public Double getAvg () {
+    public Double getAvg() {
         return avg;
     }
 
-    public void setAvg (final Double avg) {
+    public void setAvg(Double avg) {
         this.avg = avg;
     }
 
-    public Long getCount () {
-        return count;
+    public Long getTotal() {
+        return total;
     }
 
-    public void setCount (final Long count) {
-        this.count = count;
+    public void setTotal(Long total) {
+        this.total = total;
     }
 }

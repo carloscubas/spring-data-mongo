@@ -12,6 +12,6 @@ import com.example.mongo.vo.EmployeeSummaryVO;
  */
 public interface EmployeeCustom {
 
-    List<EmployeeSummaryVO> aggregate();
+    EmployeeSummaryVO getSummary();
 
 }

@@ -32,7 +32,7 @@ public class EmployeeService {
             employee.setSalary(vo.getSalary());
             employee.setPosition(vo.getPosition());
             employee.setName(vo.getName());
-            employeeRepository. save(employee);
+            employeeRepository.save(employee);
         }
     }
 
@@ -45,7 +45,6 @@ public class EmployeeService {
     }
 
     public EmployeeSummaryVO sumary () {
-
-        return null;
+        return employeeRepository.getSummary();
     }
 }

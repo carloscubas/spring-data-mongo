@@ -22,14 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(PipelineResource.REQUEST_MAPPING)
 public class EmployeeController {
 
     public static final String REQUEST_EMPLOYEE_CREATE = "/create";
     public static final String REQUEST_EMPLOYEE_UPDATE = "/update/{id}";
     public static final String REQUEST_EMPLOYEE_GET = "/{id}";
     public static final String REQUEST_EMPLOYEE_ALL = "/";
-    public static final String REQUEST_EMPLOYEE_ALL_AVG_SALARY = "/avg";
+    public static final String REQUEST_EMPLOYEE_SUMMARY = "/summary";
 
     @Autowired
     private EmployeeService employeeService;
@@ -64,7 +63,7 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping(value = REQUEST_EMPLOYEE_ALL_AVG_SALARY)
+    @GetMapping(value = REQUEST_EMPLOYEE_SUMMARY)
     public ResponseEntity<EmployeeSummaryVO> getAllAvg() {
             return new ResponseEntity<EmployeeSummaryVO>(employeeService.sumary(), FOUND);
 
