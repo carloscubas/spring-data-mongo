@@ -4,10 +4,6 @@ import com.example.mongo.vo.EmployeeSummaryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.*;
-import org.springframework.data.rest.core.config.Projection;
-
-
-import java.util.List;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 

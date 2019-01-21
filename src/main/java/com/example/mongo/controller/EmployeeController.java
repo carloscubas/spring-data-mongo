@@ -1,13 +1,8 @@
 package com.example.mongo.controller;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.FOUND;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-
 import java.util.List;
 
 import com.example.mongo.exception.NotFoundException;
-import com.example.mongo.model.Employee;
 import com.example.mongo.service.EmployeeService;
 import com.example.mongo.vo.EmployeeSummaryVO;
 import com.example.mongo.vo.EmployeeVO;
@@ -18,8 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 public class EmployeeController {
@@ -41,8 +37,12 @@ public class EmployeeController {
 
     @PutMapping(value = REQUEST_EMPLOYEE_UPDATE)
     public ResponseEntity update(@PathVariable("id") final String id, @RequestBody EmployeeVO vo) {
-        employeeService.update(id, vo);
-        return new ResponseEntity<>(CREATED);
+        try{
+            employeeService.update(id, vo);
+            return new ResponseEntity<>(OK);
+        }catch (NotFoundException e){
+            return new ResponseEntity(NOT_FOUND);
+        }
     }
 
     @GetMapping(value = REQUEST_EMPLOYEE_GET)
@@ -65,7 +65,6 @@ public class EmployeeController {
 
     @GetMapping(value = REQUEST_EMPLOYEE_SUMMARY)
     public ResponseEntity<EmployeeSummaryVO> getAllAvg() {
-            return new ResponseEntity<EmployeeSummaryVO>(employeeService.sumary(), FOUND);
-
+        return new ResponseEntity<EmployeeSummaryVO>(employeeService.sumary(), FOUND);
     }
 }

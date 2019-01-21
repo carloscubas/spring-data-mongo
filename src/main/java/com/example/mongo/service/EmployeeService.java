@@ -2,10 +2,7 @@ package com.example.mongo.service;
 
 import static com.example.mongo.converter.EmployeeConverter.toEntity;
 import static com.example.mongo.converter.EmployeeConverter.toVo;
-
 import java.util.List;
-import java.util.Optional;
-
 import com.example.mongo.exception.NotFoundException;
 import com.example.mongo.model.Employee;
 import com.example.mongo.repository.EmployeeRepository;
@@ -13,7 +10,6 @@ import com.example.mongo.vo.EmployeeSummaryVO;
 import com.example.mongo.vo.EmployeeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class EmployeeService {
@@ -26,14 +22,8 @@ public class EmployeeService {
     }
 
     public void update(String id, EmployeeVO vo) {
-        Optional<Employee> employeeFind = employeeRepository.findById(id);
-        if(employeeFind.isPresent()){
-            Employee employee = employeeFind.get();
-            employee.setSalary(vo.getSalary());
-            employee.setPosition(vo.getPosition());
-            employee.setName(vo.getName());
-            employeeRepository.save(employee);
-        }
+        Employee employee = employeeRepository.findById(id).orElseThrow(NotFoundException::new);
+        employeeRepository.save(toEntity(employee, vo));
     }
 
     public EmployeeVO get(String id) {

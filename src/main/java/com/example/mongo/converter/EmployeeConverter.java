@@ -7,6 +7,13 @@ import java.util.stream.Collectors;
 
 public class EmployeeConverter {
 
+    public static Employee toEntity(Employee employee, EmployeeVO vo) {
+        employee.setSalary(vo.getSalary());
+        employee.setPosition(vo.getPosition());
+        employee.setName(vo.getName());
+        return employee;
+    }
+
     public static Employee toEntity(EmployeeVO vo){
         Employee entity = new Employee();
         entity.setName(vo.getName());

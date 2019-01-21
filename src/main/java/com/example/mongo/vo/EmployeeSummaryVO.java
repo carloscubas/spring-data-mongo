@@ -1,11 +1,5 @@
 package com.example.mongo.vo;
 
-/**
- * @author s2it_csilva
- * @version $Revision: $<br/>
- * $Id: $
- * @since 1/21/19 1:30 PM
- */
 public class EmployeeSummaryVO {
 
     Long sum;
