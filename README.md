@@ -1,7 +1,7 @@
 # spring-data-mongo
 Spring data mongo example
 
-##Create
+## Create
 __Post__
 ```
 localhost:8080/create
@@ -13,7 +13,7 @@ localhost:8080/create
 }
 ```
 
-##Update
+## Update
 __Put__
 ```
 localhost:8080/update/<id>
@@ -25,19 +25,19 @@ localhost:8080/update/<id>
 }
 ```
 
-##Bring values summary
+## Bring values summary
 __Get__
 ```
 localhost:8080/summary
 ```
 
-##Get employee by id
+## Get employee by id
 __Get__
 ```
 localhost:8080/<id>
 ```
 
-##Get list of employees
+## Get list of employees
 
 __Get__
 ```
