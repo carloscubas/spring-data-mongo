@@ -21,7 +21,7 @@ Put: localhost:8080/update/<id>
 }
 ```
 
-## Bring values summary
+## Bring summary values
 ```
 Get: localhost:8080/summary
 ```
