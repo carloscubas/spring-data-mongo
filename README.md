@@ -2,10 +2,8 @@
 Spring data mongo example
 
 ## Create
-__Post__
 ```
-localhost:8080/create
-
+Post: localhost:8080/create
 {
 	"name" : "Bruno darcolito",
 	"position" : "tecnical leader",
@@ -14,10 +12,8 @@ localhost:8080/create
 ```
 
 ## Update
-__Put__
 ```
-localhost:8080/update/<id>
-
+Put: localhost:8080/update/<id>
 {
 	"name" : "bruno darcolito da silva",
 	"position" : "techinical leader",
@@ -26,20 +22,16 @@ localhost:8080/update/<id>
 ```
 
 ## Bring values summary
-__Get__
 ```
-localhost:8080/summary
+Get: localhost:8080/summary
 ```
 
 ## Get employee by id
-__Get__
 ```
-localhost:8080/<id>
+Get: localhost:8080/<id>
 ```
 
 ## Get list of employees
-
-__Get__
 ```
-localhost:8080/
+Get: localhost:8080/
 ```
