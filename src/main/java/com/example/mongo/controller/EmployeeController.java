@@ -1,25 +1,35 @@
 package com.example.mongo.controller;
 
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.FOUND;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+
+import java.util.List;
+
 import com.example.mongo.exception.NotFoundException;
+import com.example.mongo.model.Employee;
 import com.example.mongo.service.EmployeeService;
+import com.example.mongo.vo.EmployeeSummaryVO;
 import com.example.mongo.vo.EmployeeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.math.BigInteger;
-import java.util.List;
-
-import static org.springframework.http.HttpStatus.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(PipelineResource.REQUEST_MAPPING)
 public class EmployeeController {
 
     public static final String REQUEST_EMPLOYEE_CREATE = "/create";
     public static final String REQUEST_EMPLOYEE_UPDATE = "/update/{id}";
     public static final String REQUEST_EMPLOYEE_GET = "/{id}";
     public static final String REQUEST_EMPLOYEE_ALL = "/";
-
+    public static final String REQUEST_EMPLOYEE_ALL_AVG_SALARY = "/avg";
 
     @Autowired
     private EmployeeService employeeService;
@@ -52,5 +62,11 @@ public class EmployeeController {
         }catch (NotFoundException e){
             return new ResponseEntity(NOT_FOUND);
         }
+    }
+
+    @GetMapping(value = REQUEST_EMPLOYEE_ALL_AVG_SALARY)
+    public ResponseEntity<EmployeeSummaryVO> getAllAvg() {
+            return new ResponseEntity<EmployeeSummaryVO>(employeeService.sumary(), FOUND);
+
     }
 }

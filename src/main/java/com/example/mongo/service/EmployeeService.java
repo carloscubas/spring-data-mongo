@@ -1,19 +1,18 @@
 package com.example.mongo.service;
 
-import com.example.mongo.converter.EmployeeConverter;
-import com.example.mongo.exception.NotFoundException;
-import com.example.mongo.model.Employee;
-import com.example.mongo.repository.EmployeeRepository;
-import com.example.mongo.vo.EmployeeVO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import static com.example.mongo.converter.EmployeeConverter.toEntity;
+import static com.example.mongo.converter.EmployeeConverter.toVo;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.mongo.converter.EmployeeConverter.toEntity;
-import static com.example.mongo.converter.EmployeeConverter.toVo;
+import com.example.mongo.exception.NotFoundException;
+import com.example.mongo.model.Employee;
+import com.example.mongo.repository.EmployeeRepository;
+import com.example.mongo.vo.EmployeeSummaryVO;
+import com.example.mongo.vo.EmployeeVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 @Service
@@ -43,5 +42,10 @@ public class EmployeeService {
 
     public List<EmployeeVO> findAll() {
         return toVo(employeeRepository.findAll());
+    }
+
+    public EmployeeSummaryVO sumary () {
+
+        return null;
     }
 }
