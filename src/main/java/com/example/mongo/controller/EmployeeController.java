@@ -1,5 +1,11 @@
 package com.example.mongo.controller;
 
+import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.FOUND;
+import static org.springframework.http.HttpStatus.GONE;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
+import static org.springframework.http.HttpStatus.OK;
+
 import java.util.List;
 
 import com.example.mongo.exception.NotFoundException;
@@ -8,14 +14,13 @@ import com.example.mongo.vo.EmployeeSummaryVO;
 import com.example.mongo.vo.EmployeeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import static org.springframework.http.HttpStatus.*;
 
 @RestController
 public class EmployeeController {
@@ -25,6 +30,8 @@ public class EmployeeController {
     public static final String REQUEST_EMPLOYEE_GET = "/{id}";
     public static final String REQUEST_EMPLOYEE_ALL = "/";
     public static final String REQUEST_EMPLOYEE_SUMMARY = "/summary";
+    public static final String REQUEST_EMPLOYEE_DELETE = "/{id}";
+
 
     @Autowired
     private EmployeeService employeeService;
@@ -66,5 +73,11 @@ public class EmployeeController {
     @GetMapping(value = REQUEST_EMPLOYEE_SUMMARY)
     public ResponseEntity<EmployeeSummaryVO> getAllAvg() {
         return new ResponseEntity<EmployeeSummaryVO>(employeeService.sumary(), FOUND);
+    }
+
+    @DeleteMapping(value = REQUEST_EMPLOYEE_DELETE)
+    public ResponseEntity delete(@PathVariable("id") final String id) {
+        employeeService.delete(id);
+        return new ResponseEntity(GONE);
     }
 }

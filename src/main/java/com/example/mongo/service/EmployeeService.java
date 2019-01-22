@@ -37,4 +37,8 @@ public class EmployeeService {
     public EmployeeSummaryVO sumary () {
         return employeeRepository.getSummary();
     }
+
+    public void delete (final String id) {
+        employeeRepository.deleteById(id);
+    }
 }

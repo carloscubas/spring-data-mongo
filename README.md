@@ -35,3 +35,8 @@ Get: localhost:8080/<id>
 ```
 Get: localhost:8080/
 ```
+
+## Delete employee by id
+```
+Delete: localhost:8080/<id>
+```
